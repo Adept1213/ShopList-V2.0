@@ -73,11 +73,10 @@ function makeWriteable (event) {
 }
 function replaceWithInput (target) {
     target.outerHTML = `<input id='input' value='${target.textContent}' class='${target.className}' oninput='changeInput()'>`;
-
     let tdInput = document.getElementById ('input');
-    tdInput.focus()
     tdInput.selectionStart = tdInput.value.length;
-    tdInput.className != 'name' ? tdInput.setAttribute ('type', 'number') : null;   
+    tdInput.className != 'name' ? tdInput.setAttribute ('type', 'number') : null; 
+    tdInput.focus()  
     tdInput.addEventListener ('blur', () => replaceWithTd (tdInput));
 } 
 function replaceWithTd (target) {

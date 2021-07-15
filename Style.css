@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0% auto;
+    max-width: 800px;
+}
+
+body {
+    width: 100%;
+}
+
+/* Header */
+header {
+    height: 50px;
+    background-color: rgb(115, 240, 245);
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.header__totalCost {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    font-size: 25px;
+}
+
+
+.header__totalCost__cost {
+    vertical-align: top;
+    color:green;
+    
+    line-height: 20px;
+}
+
+.header__totalCost__cost:after {
+    height: 60px;
+    width:2px ;
+    background-color:black;
+    content:'';
+    position: absolute;
+    top: -7px;
+    transform: rotate(45deg);
+}
+
+.header__totalCost__price {
+    vertical-align: bottom;
+    color:blue;
+
+    line-height: 70px;
+}
+
+
+/* main */
+main {
+    font-size: 20px;
+}
+
+.bottomButtons {/*button*/   
+    width: 100%;
+    height: 50px;
+    border: none;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    position: absolute;
+    bottom: 0%;
+}
+
+.addNewProduct {  /*button*/
+    background-color: cadetblue;
+    border: none;
+    width: 100%;
+
+
+}
+   
+table {
+     width: 100%;
+     -webkit-touch-callout: none; /* iOS Safari */
+     -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+         -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none;
+    touch-action: none;
+}
+
+th {
+    background-color: blanchedalmond;
+    width: 100%;
+}
+td {width : 100%; text-align: center;}
+tr {
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid black;
+
+    line-height: 40px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.bought{
+    background-color: red;
+}
+
+
+
+input {
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;  
+    font-size: 20px;
+    background-color: rgb(115, 240, 245);;
+}
+
+.test { background-color: black;}
+   
+
+.nav {
+    height: 40px;
+    background-color: rgb(224, 220, 203);
+
+    line-height: 35px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.name {color: black}
+.count {color: grey}
+.price {color: green}
+.totalCost {color: blue}

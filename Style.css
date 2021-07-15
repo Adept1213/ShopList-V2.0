@@ -87,15 +87,15 @@ table {
         -moz-user-select: none; /* Firefox */
          -ms-user-select: none; /* Internet Explorer/Edge */
          user-select: none;
-    touch-action: none;
     overflow: scroll;
+    touch-action: pan-y;
 }
 
 th {
     background-color: blanchedalmond;
     width: 100%;
 }
-td {width : 100%; text-align: center;}
+td {width : 100%; text-align: center; }
 tr {
     height: 45px;
     width: 100%;

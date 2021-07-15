@@ -5,7 +5,6 @@ let store = [
     {id : 4, name : 'Milk', count : '2', price: '54', type: 'needBuy', },  
 ]
 
-
 let totalCost = obj => obj.count * obj.price;
 function updateTotalCost (node, obj) {
     node.parentElement.lastElementChild.textContent = totalCost (obj)
@@ -172,6 +171,7 @@ function deleteTR (event) {
 
     // delete timer if merely click
     document.addEventListener ('pointerup', () => clearTimeout (interval), {once : true})
+    document.addEventListener ('pointermove', () => clearTimeout (interval), {once : true})
         
     
 }

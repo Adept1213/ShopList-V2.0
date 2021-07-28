@@ -89,6 +89,8 @@ table {
          user-select: none;
     overflow: scroll;
     touch-action: pan-y;
+
+    border-collapse: collapse;
 }
 
 th {

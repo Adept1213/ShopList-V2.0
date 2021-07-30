@@ -1,11 +1,10 @@
-// let store = [
-//     {id : 1, name : 'Banana', count : '1', price: '65', type: 'needBuy', }, 
-//     {id : 2, name : 'Fruit', count : '0.8', price: '80', type: 'needBuy',},
-//     {id : 3, name : 'Bread', count : '3', price: '34', type: 'needBuy',},
-//     {id : 4, name : 'Milk', count : '2', price: '54', type: 'needBuy', },  
-// ]
+let store;
+if (localStorage.store) {
+    store = JSON.parse (localStorage.store)
+} else {
+    store = []
+}
 
-let store = JSON.parse (localStorage.store)
 
 let totalCost = obj => obj.count * obj.price;
 function updateTotalCost (node, obj) {

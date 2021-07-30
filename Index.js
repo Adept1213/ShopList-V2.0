@@ -1,9 +1,11 @@
-let store = [
-    {id : 1, name : 'Banana', count : '1', price: '65', type: 'needBuy', }, 
-    {id : 2, name : 'Fruit', count : '0.8', price: '80', type: 'needBuy',},
-    {id : 3, name : 'Bread', count : '3', price: '34', type: 'needBuy',},
-    {id : 4, name : 'Milk', count : '2', price: '54', type: 'needBuy', },  
-]
+// let store = [
+//     {id : 1, name : 'Banana', count : '1', price: '65', type: 'needBuy', }, 
+//     {id : 2, name : 'Fruit', count : '0.8', price: '80', type: 'needBuy',},
+//     {id : 3, name : 'Bread', count : '3', price: '34', type: 'needBuy',},
+//     {id : 4, name : 'Milk', count : '2', price: '54', type: 'needBuy', },  
+// ]
+
+let store = JSON.parse (localStorage.store)
 
 let totalCost = obj => obj.count * obj.price;
 function updateTotalCost (node, obj) {
@@ -45,14 +47,13 @@ function render () {
     clearTable();
     for (let key of store) tr(key);
     showTotalCostPrice (store, headTotalCost, headTotalPrice)
-    console.log (store)
 };
 function tr (obj) {
     let className = null;
     obj.type == 'bought' ? className = 'bought' : className = '';
     let tr = `
     <tr data-id=${obj.id} class="${className}">
-        <td class="name" tabindex='1' >${obj.name}</td>
+        <td class="name" tabindex='1'>${obj.name}</td>
         <td class="count" tabindex='1'>${obj.count}</td>
         <td class="price" tabindex='1'>${obj.price}</td>
         <td class="totalCost" tabindex='1'>${totalCost(obj)}</td>
@@ -120,8 +121,9 @@ function  byu (event) {
     function setColor () {
         target.removeAttribute ('style');
         target.classList.toggle ('bought');
-        console.log (store.find ( item => item.id == target.dataset.id).type)
-        target.className == '' ? store.find ( item => item.id == target.dataset.id).type = 'needBuy' : store.find ( item => item.id == target.dataset.id).type = 'bought' ;
+        target.className == '' 
+            ? store.find ( item => item.id == target.dataset.id).type = 'needBuy' 
+            : store.find ( item => item.id == target.dataset.id).type = 'bought' ;
         showTotalCostPrice (store, headTotalCost, headTotalPrice);
         let e = new Event ('pointerup');
         document.dispatchEvent (e);
@@ -145,7 +147,9 @@ function changeInput () {
     }    
 }
 function changeStore (id, name, value) {
-    for (let key of store) key.id == id ? key[name] = value : null;
+    for (let key of store) key.id == id 
+                                ? key[name] = value 
+                                : null;                         
 }
 
 
@@ -156,10 +160,11 @@ function deleteTR (event) {
     let target = event.target;
     let interval;
     let delay = 1000;
-
+    let start = event.clientY;
+    console.log (event.clientY)
     if (target.tagName == 'TD') {
         interval = setTimeout ( () => {
-            let conf = confirm (`Are you sure want delete ${target.parentElement.firstElementChild.textContent}? `);
+            let conf = confirm (`Are you sure want delete ${target.parentElement.firstElementChild.textContent}?`);
             if (conf == true) {
                 for (let i = 0; i < store.length; i++) {
                     if (store[i].id == target.parentNode.dataset.id) store.splice(i, 1);
@@ -170,13 +175,15 @@ function deleteTR (event) {
     }
 
     // delete timer if merely click
-    document.addEventListener ('pointerup', () => clearTimeout (interval), {once : true})
-    document.addEventListener ('pointermove', () => clearTimeout (interval), {once : true})
+    window.addEventListener ('pointerup', () => clearTimeout (interval), {once : true})
+
+    document.addEventListener ('pointermove', event => {if ((event.clientY - start) < -5 || (event.clientY - start) > 5 ) clearTimeout (interval)});
         
-    
+         
 }
 
- 
-
+window.addEventListener ('unload', () => {
+    localStorage.store = JSON.stringify (store)
+})
 
 render ();

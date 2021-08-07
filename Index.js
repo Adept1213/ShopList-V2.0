@@ -2,7 +2,9 @@ let store;
 if (localStorage.store) {
     store = JSON.parse (localStorage.store)
 } else {
-    store = []
+    store = [
+        {id: 1, name: 'Milk', count : '1', price : '55', type : 'needBuy'}
+    ]
 }
 
 

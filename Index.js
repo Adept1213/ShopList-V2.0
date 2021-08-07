@@ -1,10 +1,9 @@
-// let store;
-// if (localStorage.store) {
-//     store = JSON.parse (localStorage.store)
-// } else {
-//     store = []
-// }
-localStorage.removeItem ('store')
+let store;
+if (localStorage.store) {
+    store = JSON.parse (localStorage.store)
+} else {
+    store = []
+}
 
 
 let totalCost = obj => obj.count * obj.price;

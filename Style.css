@@ -120,7 +120,8 @@ input {
     text-align: center;
     outline: none;  
     font-size: 20px;
-    background-color: rgb(115, 240, 245);;
+    background-color: rgb(115, 240, 245);
+    overflow: scroll;
 }
 
 .test { background-color: black;}
